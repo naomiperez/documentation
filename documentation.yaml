@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  title: Smartcar API
+  title: Smartcar API Client
   description: >-
     Get vehicle metadata, security information, fuel ranges, battery ranges and
     start/stop a vehicle's engine.
