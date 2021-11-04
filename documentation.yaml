@@ -1,0 +1,92 @@
+openapi: 3.0.2
+info:
+  title: Smartcar API
+  description: >-
+    Get vehicle metadata, security information, fuel ranges, battery ranges and
+    start/stop a vehicle's engine.
+  version: '1.0'
+servers:
+  - url: http://localhost:8080/
+    description: Localhost server
+paths:
+  /vehicles/{id}:
+    get:
+      tags:
+        - Vehicle Info
+      summary: Get VIN, color, door count, and drive train about vehicle.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the vehicle to get
+      responses:
+        '200':
+          description: Successful response
+  /vehicles/{id}/doors:
+    get:
+      tags:
+        - Security
+      summary: Get lock status of each door of vehicle.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the vehicle to get
+      responses:
+        '200':
+          description: Successful response
+  /vehicles/{id}/fuel:
+    get:
+      tags:
+        - Fuel Range
+      summary: Get the fuel range of a vehicle.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the vehicle to get
+      responses:
+        '200':
+          description: Successful response
+  /vehicles/{id}/battery:
+    get:
+      tags:
+        - Battery Range
+      summary: Get the battery range of a vehicle.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the vehicle to get
+      responses:
+        '200':
+          description: Successful response
+  /vehicles/{id}/engine:
+    post:
+      tags:
+        - Start/Stop Engine
+      summary: Start or stop the engine of a vehicle.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the vehicle to get
+        - name: action
+          in: query
+          description: START|STOP
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
